@@ -39,7 +39,7 @@ public class Person
     public int set_x_Directions
     {
         get { return x_Direction; }
-        set { x_Direction = Random.Shared.Next(-1, 2); }
+        set { x_Direction = value; }
     }
     // Riktning Y-Axel
 
@@ -48,13 +48,16 @@ public class Person
     public int set_y_Direction
     {
         get { return y_direction; }
-        set { y_direction = Random.Shared.Next(-1, 2); }
+        set { y_direction = value; }
     }
 
-    public Person(string name)
+    public Person(string name = null)
     {
         Name = name;
- 
+        y_direction = random.Next(-1, 2);
+        x_Direction = random.Next(-1, 2);
+        x = random.Next(1, Console.WindowWidth);
+        y = random.Next(1, Console.WindowHeight - 1);
     }
 
     public virtual void displaychar()
@@ -72,6 +75,11 @@ public class Thief : Person
        
 
     }
+    public override void displaychar()
+    {
+
+        Console.WriteLine("T");
+    }
 }
 
 public class Police : Person
@@ -81,6 +89,11 @@ public class Police : Person
        
 
     }
+    public override void displaychar()
+    {
+
+        Console.WriteLine("P");
+    }
 }
 
 public class Citizen : Person
@@ -89,5 +102,10 @@ public class Citizen : Person
     {
        
 
+    }
+    public override void displaychar()
+    {
+
+        Console.WriteLine("C");
     }
 }
