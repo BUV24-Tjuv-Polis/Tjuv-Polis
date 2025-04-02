@@ -10,6 +10,7 @@ namespace Tjuv_Polis;
 
 public class Person
 {
+    
     private static Random random = new Random();
 
     public string? Name { get; set; }
@@ -66,8 +67,8 @@ public class Person
 
     public virtual void displaychar()
     {   
-   
-        Console.Write("ö");
+        
+        Console.WriteLine("ö");
     }
 
 }
@@ -82,7 +83,7 @@ public class Thief : Person
     public override void displaychar()
     {
 
-        Console.WriteLine("T");
+        Console.Write("T");
     }
 }
 
@@ -96,7 +97,7 @@ public class Police : Person
     public override void displaychar()
     {
 
-        Console.WriteLine("P");
+        Console.Write("P");
     }
 }
 
@@ -110,6 +111,6 @@ public class Citizen : Person
     public override void displaychar()
     {
 
-        Console.WriteLine("C");
+        Console.Write("C");
     }
 }
