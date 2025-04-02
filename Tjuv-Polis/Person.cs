@@ -67,15 +67,27 @@ public class Person
 
 public class Thief : Person
 {
+    public Thief(string name) : base(name)
+    {
+       
 
+    }
 }
 
 public class Police : Person
 {
+    public Police(string name) : base(name)
+    {
+       
 
+    }
 }
 
 public class Citizen : Person
 {
+    public Citizen(string name) : base(name)
+    {
+       
 
+    }
 }
