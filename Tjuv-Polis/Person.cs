@@ -16,6 +16,8 @@ public class Person
     // Positionen X-Axel
     private int x;
 
+    public int StoreX { get; set; }
+    public int StoreY { get; set; }
     public int setx
     {
         get { return x; }
@@ -58,6 +60,8 @@ public class Person
         x_Direction = random.Next(-1, 2);
         x = random.Next(1, Console.WindowWidth);
         y = random.Next(1, Console.WindowHeight - 1);
+        StoreX = x;
+        StoreY = y;
     }
 
     public virtual void displaychar()
