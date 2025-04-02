@@ -62,9 +62,9 @@ public class Person
     }
 
     public virtual void displaychar()
-    {
-        Console.SetCursorPosition(x, y);
-        Console.Write("ö");
+    {   
+        
+        Console.WriteLine("ö");
     }
 
 }

@@ -14,19 +14,7 @@ internal class Program
 
        };
 
-
-        Random random = new Random();
-
-        foreach (Person person in list)
-        {
-
-            person.setx += random.Next(1, Console.WindowWidth - 1);
-            person.sety += random.Next(1, Console.WindowHeight - 1);
-
-
-
-        }
-
+        Interface itn = new Interface();
         while (true)
         {
             Console.Clear();
@@ -41,7 +29,6 @@ internal class Program
                 int x =0, y =0;
           
 
-            Thread.Sleep(100);
         }
     }
 }
