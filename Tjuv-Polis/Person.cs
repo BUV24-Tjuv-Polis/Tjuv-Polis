@@ -4,12 +4,15 @@
 
 public class Person
 {
+    
     private static Random random = new Random();
 
     public string? Name { get; set; }
     // Positionen X-Axel
     private int x;
 
+    public int StoreX { get; set; }
+    public int StoreY { get; set; }
     public int setx
     {
         get { return x; }
@@ -50,8 +53,10 @@ public class Person
         Name = name;
         y_direction = random.Next(-1, 2);
         x_Direction = random.Next(-1, 2);
-        x = random.Next(2, 120);
-        y = random.Next(2, 15 - 1);
+        x = random.Next(1, Console.WindowWidth);
+        y = random.Next(1, Console.WindowHeight - 1);
+        StoreX = x;
+        StoreY = y;
     }
 
     public virtual void displaychar()
@@ -71,8 +76,9 @@ public class Thief : Person
     }
     public override void displaychar()
     {
+        Console.ForegroundColor = ConsoleColor.Red;
 
-        Console.WriteLine("T");
+        Console.Write("T");
     }
 }
 
@@ -85,8 +91,8 @@ public class Police : Person
     }
     public override void displaychar()
     {
-
-        Console.WriteLine("P");
+        Console.ForegroundColor = ConsoleColor.Blue;
+        Console.Write("P");
     }
 }
 
@@ -99,7 +105,7 @@ public class Citizen : Person
     }
     public override void displaychar()
     {
-
-        Console.WriteLine("C");
+        Console.ForegroundColor = ConsoleColor.Green;
+        Console.Write("C");
     }
 }
