@@ -21,20 +21,19 @@ public class Person
 
     // Riktning Y-Axel
     public int y_Direction { get; set; }
-
 }
 
 public class Thief : Person
 {
-
+    public char Theif_Char { get; set; } = 'T';
 }
 
 public class Police : Person
 {
-
+    public char Police_Char { get; set; } = 'P';
 }
 
 public class Citizen : Person
 {
-
+    public char Citizen_Char { get; set; } = 'C';
 }
