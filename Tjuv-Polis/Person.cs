@@ -75,6 +75,11 @@ public class Thief : Person
        
 
     }
+    public override void displaychar()
+    {
+
+        Console.WriteLine("T");
+    }
 }
 
 public class Police : Person
@@ -84,6 +89,11 @@ public class Police : Person
        
 
     }
+    public override void displaychar()
+    {
+
+        Console.WriteLine("P");
+    }
 }
 
 public class Citizen : Person
@@ -92,5 +102,10 @@ public class Citizen : Person
     {
        
 
+    }
+    public override void displaychar()
+    {
+
+        Console.WriteLine("C");
     }
 }
