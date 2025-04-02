@@ -6,35 +6,94 @@ using System.Threading.Tasks;
 
 namespace Tjuv_Polis;
 
+
+
 public class Person
 {
     private static Random random = new Random();
 
+    public string? Name { get; set; }
     // Positionen X-Axel
-    public int x { get; set; }
+    private int x;
+
+    public int setx
+    {
+        get { return x; }
+        set { x = Random.Shared.Next(1, Console.WindowWidth); }
+    }
 
     // Positionen Y-Axel
-    public int y { get; set; }
+
+    private int y;
+
+    public int sety
+    {
+        get { return y; }
+        set { y = Random.Shared.Next(1, Console.WindowHeight -1); }
+    }
 
     // Riktning X-Axel
-    public int x_Direction { get; set; }
+    
+    private int x_Direction;
 
+    public int set_x_Directions
+    {
+        get { return x_Direction; }
+        set { x_Direction = Random.Shared.Next(-1, 2); }
+    }
     // Riktning Y-Axel
-    public int y_Direction { get; set; }
+
+    private int y_direction;
+
+    public int set_y_Direction
+    {
+        get { return y_direction; }
+        set { y_direction = Random.Shared.Next(-1, 2); }
+    }
+
+    public Person(string name)
+    {
+        Name = name;
+ 
+    }
+
+    public virtual void displaychar()
+    {   
+   
+        Console.WriteLine("ö");
+    }
 
 }
 
 public class Thief : Person
 {
-
+    public Thief(string name) : base(name)
+    {
+    }
+    public override void displaychar()
+    {
+        Console.WriteLine("T");
+    }
 }
 
 public class Police : Person
 {
-
+    public Police(string name) : base(name)
+    {
+    }
+    public override void displaychar()
+    {
+        Console.WriteLine("P");
+    }
 }
 
 public class Citizen : Person
 {
-
+    public Citizen(string name) : base(name)
+    {
+    }
+    public override void displaychar()
+    {
+        Console.WriteLine("C");
+    }
 }
