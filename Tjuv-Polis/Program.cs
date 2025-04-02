@@ -52,7 +52,7 @@ internal class Program
                 person.displaychar();
             }
 
-            Thread.Sleep(500);
+            Thread.Sleep(100);
         }
     }
 }

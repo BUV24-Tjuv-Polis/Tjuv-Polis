@@ -82,6 +82,7 @@ public class Thief : Person
     }
     public override void displaychar()
     {
+        Console.ForegroundColor = ConsoleColor.Red;
 
         Console.Write("T");
     }
@@ -96,7 +97,7 @@ public class Police : Person
     }
     public override void displaychar()
     {
-
+        Console.ForegroundColor = ConsoleColor.Blue;
         Console.Write("P");
     }
 }
@@ -110,7 +111,7 @@ public class Citizen : Person
     }
     public override void displaychar()
     {
-
+        Console.ForegroundColor = ConsoleColor.Green;
         Console.Write("C");
     }
 }
