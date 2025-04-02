@@ -64,7 +64,7 @@ public class Person
     public virtual void displaychar()
     {   
         
-        Console.WriteLine("ö");
+        Console.Write("ö");
     }
 
 }

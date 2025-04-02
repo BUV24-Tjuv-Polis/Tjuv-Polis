@@ -7,18 +7,7 @@ internal class Program
         List<Person> list = new List<Person>
        {
            new Citizen("erik"),
-           new Citizen("erik"),
-           new Citizen("erik"),
-           new Citizen("erik"),
-           new Police("jossan"),
-           new Police("jossan"),
-           new Police("jossan"),
-           new Police("jossan"),
-           new Police("jossan"),
-           new Thief("hans"),
-           new Thief("hans"),
-           new Thief("hans"),
-           new Thief("hans")
+
 
        };
 
