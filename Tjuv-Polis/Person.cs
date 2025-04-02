@@ -67,33 +67,15 @@ public class Person
 
 public class Thief : Person
 {
-    public Thief(string name) : base(name)
-    {
-    }
-    public override void displaychar()
-    {
-        Console.WriteLine("T");
-    }
+
 }
 
 public class Police : Person
 {
-    public Police(string name) : base(name)
-    {
-    }
-    public override void displaychar()
-    {
-        Console.WriteLine("P");
-    }
+
 }
 
 public class Citizen : Person
 {
-    public Citizen(string name) : base(name)
-    {
-    }
-    public override void displaychar()
-    {
-        Console.WriteLine("C");
-    }
+
 }
