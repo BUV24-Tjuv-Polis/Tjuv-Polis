@@ -19,7 +19,7 @@ public class Person
     public int setx
     {
         get { return x; }
-        set { x = Random.Shared.Next(1, Console.WindowWidth); }
+        set { x = value; }
     }
 
     // Positionen Y-Axel
@@ -29,7 +29,7 @@ public class Person
     public int sety
     {
         get { return y; }
-        set { y = Random.Shared.Next(1, Console.WindowHeight -1); }
+        set { y = value; }
     }
 
     // Riktning X-Axel
@@ -60,7 +60,7 @@ public class Person
     public virtual void displaychar()
     {   
    
-        Console.WriteLine("ö");
+        Console.Write("ö");
     }
 
 }
