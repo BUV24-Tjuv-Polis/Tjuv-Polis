@@ -7,15 +7,30 @@ internal class Program
         List<Person> list = new List<Person>
        {
            new Citizen("erik"),
+           new Citizen("erik"),
+           new Citizen("erik"),
+           new Citizen("erik"),
            new Police("jossan"),
+           new Police("jossan"),
+           new Police("jossan"),
+           new Police("jossan"),
+           new Police("jossan"),
+           new Thief("hans"),
+           new Thief("hans"),
+           new Thief("hans"),
            new Thief("hans")
 
        };
 
-        foreach (Person person in list)
+        Interface itn = new Interface();
+        while (true)
         {
-            Console.SetCursorPosition(person.setx, person.sety);
-            person.displaychar();
+            foreach (Person person in list)
+            {
+                Console.SetCursorPosition(person.setx--, person.sety);
+                person.displaychar();
+            }
+
         }
     }
 }
