@@ -43,14 +43,18 @@ internal class Program
 
         Interface theBorder = new Interface();
         theBorder.DrawBorder(120, 15, 0, 0);
+        Console.SetCursorPosition(55, 0);
+        Console.WriteLine("-THE CITY-");
 
         Interface thePrisonBorder = new Interface();
-
         theBorder.DrawBorder(20, 15, 0, 15);
+        Console.SetCursorPosition(6, 15);
+        Console.WriteLine("-PRISON-");
 
         Interface theNewsBorder = new Interface();
-
         theBorder.DrawBorder(99, 15, 21, 15);
+        Console.SetCursorPosition(65, 15);
+        Console.WriteLine("-BREAKING NEWS-");
 
 
         Console.SetCursorPosition(22, 16);
