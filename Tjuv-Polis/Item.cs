@@ -9,7 +9,7 @@ namespace Tjuv_Polis;
 public class Item
 {
     // Namn för 
-    public string ItemName { get; set; }
+    public string? ItemName { get; set; } = null;
 
     // Medboragens inventory
     public Stack<Item> Inventory { get; set; } = new Stack<Item>();
@@ -20,7 +20,7 @@ public class Item
     // Polisens invnetory
     public List<Item> Seized_Properties { get; set; } = new List<Item>();
 
-    public Item(string itemName)
+    public Item(string itemName = null)
     {
         ItemName = itemName;
     }

@@ -50,7 +50,7 @@ public class Person : Item
         set { y_direction = value; }
     }
 
-    public Person(string itemName, string name = null) : base(itemName)
+    public Person(string name = null)
     {
         Name = name;
         y_direction = random.Next(-1, 2);
