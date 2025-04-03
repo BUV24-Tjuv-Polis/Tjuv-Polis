@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Tjuv_Polis;
+﻿namespace Tjuv_Polis;
 
 
 
@@ -36,7 +30,7 @@ public class Person
     }
 
     // Riktning X-Axel
-    
+
     private int x_Direction;
 
     public int set_x_Directions
@@ -66,8 +60,8 @@ public class Person
     }
 
     public virtual void displaychar()
-    {   
-        
+    {
+
         Console.WriteLine("ö");
     }
 
@@ -77,7 +71,7 @@ public class Thief : Person
 {
     public Thief(string name) : base(name)
     {
-       
+
 
     }
     public override void displaychar()
@@ -92,7 +86,7 @@ public class Police : Person
 {
     public Police(string name) : base(name)
     {
-       
+
 
     }
     public override void displaychar()
@@ -106,7 +100,7 @@ public class Citizen : Person
 {
     public Citizen(string name) : base(name)
     {
-       
+
 
     }
     public override void displaychar()
