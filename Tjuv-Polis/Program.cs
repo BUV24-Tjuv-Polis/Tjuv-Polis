@@ -28,7 +28,7 @@ internal class Program
         Console.ReadKey();
 
         List<Person> list = new List<Person>
-       {
+        { 
        new Citizen("Erik"),
        new Citizen("Johan"),
        new Citizen("Ella"),
