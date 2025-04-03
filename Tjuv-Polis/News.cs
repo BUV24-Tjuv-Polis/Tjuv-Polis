@@ -6,6 +6,8 @@ public class News
     public string Content { get; set; }
 
 
+
+
     public News(string title, string content)
     {
         Title = title;
@@ -20,6 +22,7 @@ public class News
         newsList.Add(new News(title, content));
 
     }
+
 
 
     public static void TheNews()
