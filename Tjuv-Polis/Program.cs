@@ -5,12 +5,6 @@ internal class Program
 {
     static void Main(string[] args)
     {
-
-
-
-
-
-
         List<Person> list = new List<Person>
        {
        new Citizen("Erik"),
@@ -37,8 +31,6 @@ internal class Program
             person.setx += random.Next(1, 120 - 1);
             person.sety += random.Next(1, 15 - 1);
 
-
-
         }
 
         Interface theBorder = new Interface();
@@ -63,8 +55,6 @@ internal class Program
         while (true)
         {
 
-
-
             Console.CursorVisible = false;
 
             foreach (Person person in list)
@@ -86,8 +76,6 @@ internal class Program
                 }
                 person.P = person.setx;
                 person.L = person.sety;
-
-
 
 
                 Console.SetCursorPosition(person.setx, person.sety);

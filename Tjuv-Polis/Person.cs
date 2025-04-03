@@ -66,7 +66,6 @@ public class Person
         Console.WriteLine("ö");
 
     }
-
 }
 
 public class Thief : Person
@@ -115,8 +114,4 @@ public class Citizen : Person
         Console.Write("C");
 
     }
-
-
-
-
 }
