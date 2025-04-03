@@ -4,7 +4,9 @@
 
 public class Person
 {
-    
+    public int P { get; set; }
+    public int L { get; set; }
+
     private static Random random = new Random();
 
     public string? Name { get; set; }
@@ -53,16 +55,16 @@ public class Person
         Name = name;
         y_direction = random.Next(-1, 2);
         x_Direction = random.Next(-1, 2);
-        x = random.Next(1, Console.WindowWidth);
-        y = random.Next(1, Console.WindowHeight - 1);
+        x = random.Next(2, 118);
+        y = random.Next(2, 13);
         StoreX = x;
         StoreY = y;
     }
 
     public virtual void displaychar()
     {
-
         Console.WriteLine("ö");
+
     }
 
 }
@@ -79,6 +81,7 @@ public class Thief : Person
         Console.ForegroundColor = ConsoleColor.Red;
 
         Console.Write("T");
+
     }
 }
 
@@ -92,7 +95,9 @@ public class Police : Person
     public override void displaychar()
     {
         Console.ForegroundColor = ConsoleColor.Blue;
+
         Console.Write("P");
+
     }
 }
 
@@ -106,6 +111,12 @@ public class Citizen : Person
     public override void displaychar()
     {
         Console.ForegroundColor = ConsoleColor.Green;
+
         Console.Write("C");
+
     }
+
+
+
+
 }

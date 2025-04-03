@@ -18,6 +18,7 @@ public class News
     public static List<News> newsList = new List<News>();
     public static void AddNews(string title, string content)
     {
+
         newsList.Add(new News(title, content));
 
     }
