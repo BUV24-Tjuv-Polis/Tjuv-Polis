@@ -8,21 +8,38 @@ namespace Tjuv_Polis;
 
 public class Item
 {
+    // Namn för 
+    public string ItemName { get; set; }
+
     // Medboragens inventory
-    public Stack<Item> Inventory { get; set; }
+    public Stack<Item> Inventory { get; set; } = new Stack<Item>();
 
     // Tjuvens inventory
-    public List<Item> Stole_Properties  { get; set; }
+    public List<Item> Stole_Properties { get; set; } = new List<Item>();
 
     // Polisens invnetory
-    public List<Item> Seized_Properties { get; set; }
+    public List<Item> Seized_Properties { get; set; } = new List<Item>();
+
+    public Item(string itemName)
+    {
+        ItemName = itemName;
+    }
 
     public void FillInventory()
     {
-        Stack<Item> items = new Stack<Item>
+        Inventory.Push(new Item("Wallet"));
+        Inventory.Push(new Item("Watch"));
+        Inventory.Push(new Item("Phone"));
+        Inventory.Push(new Item("Keys"));
+    }
+
+    // Senare implementation för backlog
+    public void ShowInventory()
+    {
+        foreach (var item in Inventory)
         {
-        
-        };
+            Console.WriteLine(item);
+        }
     }
 
 }
