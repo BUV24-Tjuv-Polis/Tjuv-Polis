@@ -4,12 +4,6 @@ internal class Program
 {
     static void Main(string[] args)
     {
-
-
-
-
-
-
         List<Person> list = new List<Person>
         { 
        new Citizen("Erik"),
@@ -36,20 +30,22 @@ internal class Program
             person.setx += random.Next(1, 120 - 1);
             person.sety += random.Next(1, 15 - 1);
 
-
-
         }
 
         Interface theBorder = new Interface();
         theBorder.DrawBorder(120, 15, 0, 0);
+        Console.SetCursorPosition(55, 0);
+        Console.WriteLine("-THE CITY-");
 
         Interface thePrisonBorder = new Interface();
-
         theBorder.DrawBorder(20, 15, 0, 15);
+        Console.SetCursorPosition(6, 15);
+        Console.WriteLine("-PRISON-");
 
         Interface theNewsBorder = new Interface();
-
         theBorder.DrawBorder(99, 15, 21, 15);
+        Console.SetCursorPosition(65, 15);
+        Console.WriteLine("-BREAKING NEWS-");
 
 
         Console.SetCursorPosition(22, 16);
@@ -57,8 +53,6 @@ internal class Program
         News.TheNews();
         while (true)
         {
-
-
 
             Console.CursorVisible = false;
 
@@ -82,8 +76,6 @@ internal class Program
                 }
                 person.P = person.setx;
                 person.L = person.sety;
-
-
 
 
                 Console.SetCursorPosition(person.setx, person.sety);
