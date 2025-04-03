@@ -33,6 +33,24 @@ public class Item
         Inventory.Push(new Item("Keys"));
     }
 
+    //Tjuven tar av medborgaren
+    public void ThiefPopItem()
+    {
+        if(Inventory.Count > 0)
+        {
+            Stole_Properties.Add(Inventory.Pop());
+        }
+    }
+    //Polisen tar allt av tjuven
+    public void CopSiezedAll()
+    {
+        if (Stole_Properties.Count > 0)
+        {
+            Seized_Properties.AddRange(Stole_Properties);
+            Seized_Properties.Clear();
+        }
+    }
+
     // Senare implementation för backlog
     public void ShowInventory()
     {
