@@ -1,4 +1,6 @@
-﻿namespace Tjuv_Polis;
+﻿using System;
+
+namespace Tjuv_Polis;
 
 internal class Program
 {
@@ -10,11 +12,50 @@ internal class Program
            new Citizen("erik"),
            new Citizen("erik"),
            new Citizen("erik"),
+           new Citizen("erik"),
+           new Citizen("erik"),
+           new Citizen("erik"),
+           new Citizen("erik"),
+           new Citizen("erik"),
+           new Citizen("erik"),
+           new Citizen("erik"),
+           new Citizen("erik"),
+           new Citizen("erik"),
+           new Citizen("erik"),
+           new Citizen("erik"),
+           new Citizen("erik"),
+           new Citizen("erik"),
+           new Citizen("erik"),
+           new Citizen("erik"),
+           new Citizen("erik"),
+           new Citizen("erik"),
            new Police("jossan"),
            new Police("jossan"),
            new Police("jossan"),
            new Police("jossan"),
            new Police("jossan"),
+           new Police("jossan"),
+           new Police("jossan"),
+           new Police("jossan"),
+           new Police("jossan"),
+           new Police("jossan"),
+           new Police("jossan"),
+           new Police("jossan"),
+           new Police("jossan"),
+           new Police("jossan"),
+           new Police("jossan"),
+           new Thief("hans"),
+           new Thief("hans"),
+           new Thief("hans"),
+           new Thief("hans"),
+           new Thief("hans"),
+           new Thief("hans"),
+           new Thief("hans"),
+           new Thief("hans"),
+           new Thief("hans"),
+           new Thief("hans"),
+           new Thief("hans"),
+           new Thief("hans"),
            new Thief("hans"),
            new Thief("hans"),
            new Thief("hans"),
@@ -44,15 +85,18 @@ internal class Program
                     person.setx = person.StoreX;
                     person.sety = person.StoreY;
                 }
+                
 
                 person.setx += random.Next(-1, 2);
                 person.sety += random.Next(-1, 2);
 
                 Console.SetCursorPosition(person.setx, person.sety);
                 person.displaychar();
-            }
+                Console.CursorVisible = false;
 
-            Thread.Sleep(100);
+           
+            }
+            Thread.Sleep(10);
         }
     }
 }
