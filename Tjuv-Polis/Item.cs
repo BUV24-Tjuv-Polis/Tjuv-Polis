@@ -36,10 +36,21 @@ public class Item
     // Senare implementation för backlog
     public void ShowInventory()
     {
-        foreach (var item in Inventory)
+        if (Inventory.Count == 0)
         {
-            Console.WriteLine(item);
+            Console.WriteLine("It's empty!");
         }
+
+        else
+        {
+            Console.WriteLine("Inventory:");
+            foreach (var item in Inventory)
+            {
+                Console.WriteLine($"{item.ItemName}");
+            }
+        }
+
+            
     }
 
 }
