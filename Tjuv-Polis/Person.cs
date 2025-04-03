@@ -2,7 +2,7 @@
 
 
 
-public class Person
+public class Person : Item
 {
     public int P { get; set; }
     public int L { get; set; }
@@ -63,10 +63,32 @@ public class Person
 
     public virtual void displaychar()
     {
-        Console.WriteLine("ö");
+        Console.WriteLine("Ö");
 
     }
 
+    public List<Person> Persons()
+    {
+        
+        List<Person> list = new List<Person>
+        {
+       new Citizen("Erik"),
+       new Citizen("Johan"),
+       new Citizen("Ella"),
+       new Citizen("Simon"),
+       new Police("Jossan"),
+       new Police("Lukas"),
+       new Police("Laif"),
+       new Police("Hugo"),
+       new Police("Maja"),
+       new Thief("Hans"),
+       new Thief("Gunilla"),
+       new Thief("Ola"),
+       new Thief("Roger")
+
+        };
+        return list; 
+    }
 }
 
 public class Thief : Person

@@ -6,15 +6,23 @@ using System.Threading.Tasks;
 
 namespace Tjuv_Polis;
 
-internal class Item
+public class Item
 {
     // Medboragens inventory
-    public string? Inventory { get; set; }
+    public Stack<Item> Inventory { get; set; }
 
     // Tjuvens inventory
-    public string? Stole_Properties  { get; set; }
+    public List<Item> Stole_Properties  { get; set; }
 
     // Polisens invnetory
-    public string? Seized_Properties { get; set; }
+    public List<Item> Seized_Properties { get; set; }
+
+    public void FillInventory()
+    {
+        Stack<Item> items = new Stack<Item>
+        {
+        
+        };
+    }
 
 }

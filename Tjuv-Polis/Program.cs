@@ -1,4 +1,6 @@
-﻿namespace Tjuv_Polis;
+﻿using Tjuv_Polis.Models;
+
+namespace Tjuv_Polis;
 
 internal class Program
 {
@@ -6,63 +8,21 @@ internal class Program
     {
 
 
-
-
-
-
-        List<Person> list = new List<Person>
-        { 
-       new Citizen("Erik"),
-       new Citizen("Johan"),
-       new Citizen("Ella"),
-       new Citizen("Simon"),
-       new Police("Jossan"),
-       new Police("Lukas"),
-       new Police("Laif"),
-       new Police("Hugo"),
-       new Police("Maja"),
-       new Thief("Hans"),
-       new Thief("Gunilla"),
-       new Thief("Ola"),
-       new Thief("Roger")
-
-        };
-
+        Person persons = new Person();
+        List<Person> list = persons.Persons();
         Random random = new Random();
 
         foreach (Person person in list)
         {
-
             person.setx += random.Next(1, 120 - 1);
             person.sety += random.Next(1, 15 - 1);
-
-
-
         }
 
-        Interface theBorder = new Interface();
-        theBorder.DrawBorder(120, 15, 0, 0);
-        Console.SetCursorPosition(55, 0);
-        Console.WriteLine("-THE CITY-");
-
-        Interface thePrisonBorder = new Interface();
-        theBorder.DrawBorder(20, 15, 0, 15);
-        Console.SetCursorPosition(6, 15);
-        Console.WriteLine("-PRISON-");
-
-        Interface theNewsBorder = new Interface();
-        theBorder.DrawBorder(99, 15, 21, 15);
-        Console.SetCursorPosition(65, 15);
-        Console.WriteLine("-BREAKING NEWS-");
-
-
-        Console.SetCursorPosition(22, 16);
-        News.AddNews("åååå nej", "Tjuv tog någonting");
-        News.TheNews();
+        IUI UI = new UI();
+        UI.VisualCreateBorder();
+   
         while (true)
         {
-
-
 
             Console.CursorVisible = false;
 
@@ -74,7 +34,6 @@ internal class Program
                     person.setx = person.StoreX;
                     person.sety = person.StoreY;
                 }
-                
 
                 person.setx += random.Next(-1, 2);
                 person.sety += random.Next(-1, 2);
@@ -87,13 +46,9 @@ internal class Program
                 person.P = person.setx;
                 person.L = person.sety;
 
-
-
-
                 Console.SetCursorPosition(person.setx, person.sety);
                 person.displaychar();
                 Console.CursorVisible = false;
-
            
             }
             Thread.Sleep(100);
