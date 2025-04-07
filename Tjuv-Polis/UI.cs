@@ -61,19 +61,22 @@ public class UI : IUI
     {
 
 
-        Item item = new Item();
 
         foreach (Person people in list)
         {
             foreach (Person peopl in list)
             {
+                Item item = new Item();
 
                 if (people.setx == peopl.setx && people.sety == peopl.sety)
                 {
-                    if (people is Thief && peopl is Citizen)
+                    if (people is Thief && peopl is Citizen citizen)
                     {
-                        item.ThiefPopItem();
-                        News.AddNews("Ow now ", $"{people.Name} took {peopl.Name} {peopl.Pocket}");
+                        Item? stolenItem = item.ThiefPopItem(citizen);
+                        if (stolenItem != null)
+                        {
+                            News.AddNews("Ow now ", $"{people.Name} took {peopl.Name} {stolenItem}");
+                        }
 
 
                     }

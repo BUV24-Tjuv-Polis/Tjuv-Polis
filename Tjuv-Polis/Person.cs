@@ -80,12 +80,32 @@ public class Person : Item
        new Citizen("Johan"),
        new Citizen("Ella"),
        new Citizen("Simon"),
-       new Police("Jossan"),
-       new Police("Lukas"),
-       new Police("Laif"),
-       new Police("Hugo"),
-       new Police("Maja"),
+       //new Police("Jossan"),
+       //new Police("Lukas"),
+       //new Police("Laif"),
+       //new Police("Hugo"),
+       //new Police("Maja"),
        new Thief("Hans"),
+       new Thief("Gunilla"),
+       new Thief("Ola"),new Thief("Hans"),
+       new Thief("Gunilla"),
+       new Thief("Ola"),new Thief("Hans"),
+       new Thief("Gunilla"),
+       new Thief("Ola"),new Thief("Hans"),
+       new Thief("Gunilla"),
+       new Thief("Ola"),new Thief("Hans"),
+       new Thief("Gunilla"),
+       new Thief("Ola"),new Thief("Hans"),
+       new Thief("Gunilla"),
+       new Thief("Ola"),new Thief("Hans"),
+       new Thief("Gunilla"),
+       new Thief("Ola"),new Thief("Hans"),
+       new Thief("Gunilla"),
+       new Thief("Ola"),new Thief("Hans"),
+       new Thief("Gunilla"),
+       new Thief("Ola"),new Thief("Hans"),
+       new Thief("Gunilla"),
+       new Thief("Ola"),new Thief("Hans"),
        new Thief("Gunilla"),
        new Thief("Ola"),
        new Thief("Roger")
@@ -145,9 +165,11 @@ public class Police : Person
 
 public class Citizen : Person
 {
+
+    public Item InventoryItem { get; set; } = new Item();
     public Citizen(string name) : base(name)
     {
-        Pocket.FillInventory();
+        InventoryItem.FillInventory();
     }
     public override void displaychar()
     {

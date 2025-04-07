@@ -35,8 +35,6 @@ internal class Program
             foreach (Person person in list)
             {
 
-
-
                 if (person.setx <= 1 || person.setx >= 118 || person.sety <= 1 || person.sety >= 13)
                 {
                     person.setx = person.StoreX;
