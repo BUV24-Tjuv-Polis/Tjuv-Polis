@@ -9,6 +9,8 @@ public class Person : Item
 
     private static Random random = new Random();
 
+    public Item Pocket { get; set; }
+
     public string? Name { get; set; }
     // Positionen X-Axel
     private int x;
@@ -53,6 +55,7 @@ public class Person : Item
     public Person(string name = null)
     {
         Name = name;
+        Pocket = new Item();
         y_direction = random.Next(-1, 2);
         x_Direction = random.Next(-1, 2);
         x = random.Next(2, 118);
@@ -68,7 +71,7 @@ public class Person : Item
 
     }
 
-    public List<Person> Persons()
+    public List<Person> ListPerson()
     {
 
         List<Person> list = new List<Person>
@@ -89,6 +92,19 @@ public class Person : Item
 
         };
         return list;
+    }
+
+    public void DeletePerson(string name)
+    {
+        List<Person> persons = ListPerson();
+        for (int i = 0; i < persons.Count; i++)
+        {
+            if (persons[i].Name == name)
+            {
+                persons.RemoveAt(i);
+                break;
+            }
+        }
     }
 
 }
@@ -131,8 +147,7 @@ public class Citizen : Person
 {
     public Citizen(string name) : base(name)
     {
-
-
+        Pocket.FillInventory();
     }
     public override void displaychar()
     {

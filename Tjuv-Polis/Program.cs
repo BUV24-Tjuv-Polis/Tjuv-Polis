@@ -9,7 +9,7 @@ internal class Program
 
 
         Person persons = new Person();
-        List<Person> list = persons.Persons();
+        List<Person> list = persons.ListPerson();
         Random random = new Random();
 
 
@@ -23,7 +23,7 @@ internal class Program
         UI.VisualCreateBorder();
         while (true)
         {
-            UI.CheckCollision(persons.Persons());
+            UI.CheckCollision(persons.ListPerson());
 
 
             Console.SetCursorPosition(22, 16);

@@ -42,13 +42,16 @@ public class Item
         }
     }
     //Polisen tar allt av tjuven
-    public void CopSiezedAll()
+    public bool CopSiezedAll()
     {
         if (Stole_Properties.Count > 0)
         {
             Seized_Properties.AddRange(Stole_Properties);
-            Seized_Properties.Clear();
+            //Seized_Properties.Clear();
+            return true;
         }
+
+        return false;
     }
 
     // Senare implementation för backlog

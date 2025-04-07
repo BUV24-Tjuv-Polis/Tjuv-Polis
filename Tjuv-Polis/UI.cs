@@ -73,14 +73,21 @@ public class UI : IUI
                     if (people is Thief && peopl is Citizen)
                     {
                         item.ThiefPopItem();
-                        News.AddNews("Ow now ", $"{people.Name} took {peopl.Name} items");
+                        News.AddNews("Ow now ", $"{people.Name} took {peopl.Name} {peopl.Pocket}");
 
 
                     }
                     if (people is Thief && peopl is Police)
                     {
-                        item.CopSiezedAll();
+                        if (item.CopSiezedAll())
+                        {
+                            Prison prison = new Prison(people.Name);
+                            
+                            //News.AddNews("HALT ", $"{peopl.Name} siezed all items from {people.Name}");
+                        }
+
                         News.AddNews("HALT ", $"{peopl.Name} siezed all items from {people.Name}");
+
 
                     }
                     if (people is Police && peopl is Citizen)
