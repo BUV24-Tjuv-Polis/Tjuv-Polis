@@ -23,7 +23,7 @@ internal class Program
         UI.VisualCreateBorder();
         while (true)
         {
-            UI.CheckCollision(persons.ListPerson());
+            UI.CheckCollision(list);
 
 
             Console.SetCursorPosition(22, 16);

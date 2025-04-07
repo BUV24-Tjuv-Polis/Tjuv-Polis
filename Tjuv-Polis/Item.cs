@@ -45,7 +45,6 @@ public class Item
         {
             Item stolen = citizen.InventoryItem.Inventory.Pop();
             Stole_Properties.Add(stolen);
-            citizen.InventoryItem.Inventory.Pop();
             return stolen;
         }
         return null;
