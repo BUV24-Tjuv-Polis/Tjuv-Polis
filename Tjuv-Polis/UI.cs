@@ -54,8 +54,53 @@ public class UI : IUI
         Console.WriteLine("-BREAKING NEWS-");
 
 
-        Console.SetCursorPosition(22, 16);
-        News.AddNews("åååå nej", "Tjuv tog någonting");
-        News.TheNews();
+
     }
+
+    public void CheckCollision(List<Person> list)
+    {
+
+
+        Item item = new Item();
+
+        foreach (Person people in list)
+        {
+            foreach (Person peopl in list)
+            {
+
+                if (people.setx == peopl.setx && people.sety == peopl.sety)
+                {
+                    if (people is Thief && peopl is Citizen)
+                    {
+                        item.ThiefPopItem();
+                        News.AddNews("Ow now ", $"{people.Name} took {peopl.Name} items");
+
+
+                    }
+                    if (people is Thief && peopl is Police)
+                    {
+                        item.CopSiezedAll();
+                        News.AddNews("HALT ", $"{peopl.Name} siezed all items from {people.Name}");
+
+                    }
+                    if (people is Police && peopl is Citizen)
+                    {
+                        News.AddNews("Hello ", $"{people.Name} say hello to {peopl.Name}");
+
+                    }
+
+
+                }
+
+            }
+
+
+
+        }
+
+    }
+
+
+
+
 }

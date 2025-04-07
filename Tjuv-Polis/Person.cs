@@ -65,11 +65,12 @@ public class Person : Item
     {
         Console.WriteLine("Ö");
 
+
     }
 
     public List<Person> Persons()
     {
-        
+
         List<Person> list = new List<Person>
         {
        new Citizen("Erik"),
@@ -87,8 +88,9 @@ public class Person : Item
        new Thief("Roger")
 
         };
-        return list; 
+        return list;
     }
+
 }
 
 public class Thief : Person
@@ -103,6 +105,7 @@ public class Thief : Person
         Console.ForegroundColor = ConsoleColor.Red;
 
         Console.Write("T");
+        Console.ForegroundColor = ConsoleColor.White;
 
     }
 }
@@ -119,6 +122,7 @@ public class Police : Person
         Console.ForegroundColor = ConsoleColor.Blue;
 
         Console.Write("P");
+        Console.ForegroundColor = ConsoleColor.White;
 
     }
 }
@@ -135,6 +139,8 @@ public class Citizen : Person
         Console.ForegroundColor = ConsoleColor.Green;
 
         Console.Write("C");
+
+        Console.ForegroundColor = ConsoleColor.White;
 
     }
 

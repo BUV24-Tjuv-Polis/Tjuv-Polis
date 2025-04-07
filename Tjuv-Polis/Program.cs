@@ -12,6 +12,7 @@ internal class Program
         List<Person> list = persons.Persons();
         Random random = new Random();
 
+
         foreach (Person person in list)
         {
             person.setx += random.Next(1, 120 - 1);
@@ -20,14 +21,21 @@ internal class Program
 
         IUI UI = new UI();
         UI.VisualCreateBorder();
-   
         while (true)
         {
+            UI.CheckCollision(persons.Persons());
+
+
+            Console.SetCursorPosition(22, 16);
+            News.TheNews();
+
 
             Console.CursorVisible = false;
 
             foreach (Person person in list)
             {
+
+
 
                 if (person.setx <= 1 || person.setx >= 118 || person.sety <= 1 || person.sety >= 13)
                 {
@@ -49,10 +57,11 @@ internal class Program
                 Console.SetCursorPosition(person.setx, person.sety);
                 person.displaychar();
                 Console.CursorVisible = false;
-           
             }
+
             Thread.Sleep(100);
         }
+
 
     }
 }

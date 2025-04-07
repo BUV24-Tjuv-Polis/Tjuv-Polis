@@ -29,8 +29,28 @@ public class News
     {
         foreach (var news in newsList)
         {
-            Console.WriteLine($"Title: {news.Title}  Content: {news.Content}\n");
+
+            int i = 0;
+
+
+            if (newsList.Count <= 13)
+            {
+
+                for (i = 0; i < newsList.Count; i++)
+                {
+
+
+                    Console.SetCursorPosition(22, 16 + i);
+                    Console.WriteLine($"Title: {news.Title}  Content: {news.Content}\n");
+
+                }
+            }
+            else
+            {
+
+            }
         }
+
     }
 
 }
