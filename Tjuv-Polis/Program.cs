@@ -54,10 +54,11 @@ internal class Program
 
                 Console.SetCursorPosition(person.setx, person.sety);
                 person.displaychar();
+                Prison.DisplayInmates();
                 Console.CursorVisible = false;
             }
 
-            Thread.Sleep(100);
+            Thread.Sleep(20);
         }
 
 

@@ -39,23 +39,23 @@ public class Item
     }
 
     //Tjuven tar av medborgaren
-    public Item? ThiefPopItem(Citizen citizen)
+    public Item? ThiefPopItem(Citizen citizen, Thief thief)
     {
         if(citizen.InventoryItem.Inventory.Count > 0)
         {
             Item stolen = citizen.InventoryItem.Inventory.Pop();
-            Stole_Properties.Add(stolen);
+            thief.AddStolenItem(stolen);
             return stolen;
         }
         return null;
     }
     //Polisen tar allt av tjuven
-    public bool CopSiezedAll()
+    public bool CopSiezedAll(Thief thief)
     {
-        if (Stole_Properties.Count > 0)
+        if (thief.StolenProperties.Count > 0)
         {
-            Seized_Properties.AddRange(Stole_Properties);
-            //Seized_Properties.Clear();
+            Seized_Properties.AddRange(thief.StolenProperties);
+            thief.StolenProperties.Clear();
             return true;
         }
 
