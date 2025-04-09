@@ -4,7 +4,7 @@ namespace Tjuv_Polis;
 
 internal class Program
 {
-    static void Main(string[] args)
+    static async Task Main(string[] args)
     {
 
 
@@ -54,11 +54,13 @@ internal class Program
 
                 Console.SetCursorPosition(person.setx, person.sety);
                 person.displaychar();
-                Prison.DisplayInmates();
                 Console.CursorVisible = false;
             }
+            Prison.DisplayInmates();
+            await Task.Delay(30);
 
-            Thread.Sleep(20);
+            //Thread.Sleep(20);
+
         }
 
 
