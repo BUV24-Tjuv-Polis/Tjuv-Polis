@@ -23,10 +23,22 @@ public class News
 
     }
 
+    public static void ClearNews()
+    {
+        
+        for (int i = 16; i < 16 + 13; i++)
+        {
+            Console.SetCursorPosition(22, i);
+            Console.Write("".PadRight(80));
+        }
+    }
+
 
 
     public static void TheNews()
     {
+
+        ClearNews();
 
         if (newsList.Count > 13)
         {
