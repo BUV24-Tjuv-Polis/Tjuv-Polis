@@ -11,6 +11,11 @@ public class Item
     // Namn för 
     public string? ItemName { get; set; } = null;
 
+    public override string ToString()
+    {
+        return ItemName;
+    }
+
     // Medboragens inventory
     public Stack<Item> Inventory { get; set; } = new Stack<Item>();
 
@@ -34,20 +39,23 @@ public class Item
     }
 
     //Tjuven tar av medborgaren
-    public void ThiefPopItem()
+    public Item? ThiefPopItem(Citizen citizen, Thief thief)
     {
-        if(Inventory.Count > 0)
+        if(citizen.InventoryItem.Inventory.Count > 0)
         {
-            Stole_Properties.Add(Inventory.Pop());
+            Item stolen = citizen.InventoryItem.Inventory.Pop();
+            thief.AddStolenItem(stolen);
+            return stolen;
         }
+        return null;
     }
     //Polisen tar allt av tjuven
-    public bool CopSiezedAll()
+    public bool CopSiezedAll(Thief thief)
     {
-        if (Stole_Properties.Count > 0)
+        if (thief.StolenProperties.Count > 0)
         {
-            Seized_Properties.AddRange(Stole_Properties);
-            //Seized_Properties.Clear();
+            Seized_Properties.AddRange(thief.StolenProperties);
+            thief.StolenProperties.Clear();
             return true;
         }
 

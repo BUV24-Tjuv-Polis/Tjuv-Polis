@@ -23,7 +23,7 @@ internal class Program
         UI.VisualCreateBorder();
         while (true)
         {
-            UI.CheckCollision(persons.ListPerson());
+            UI.CheckCollision(list);
 
 
             Console.SetCursorPosition(22, 16);
@@ -34,8 +34,6 @@ internal class Program
 
             foreach (Person person in list)
             {
-
-
 
                 if (person.setx <= 1 || person.setx >= 118 || person.sety <= 1 || person.sety >= 13)
                 {
@@ -56,10 +54,11 @@ internal class Program
 
                 Console.SetCursorPosition(person.setx, person.sety);
                 person.displaychar();
+                Prison.DisplayInmates();
                 Console.CursorVisible = false;
             }
 
-            Thread.Sleep(100);
+            Thread.Sleep(20);
         }
 
 

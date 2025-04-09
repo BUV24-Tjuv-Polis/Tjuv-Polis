@@ -60,33 +60,40 @@ public class UI : IUI
     public void CheckCollision(List<Person> list)
     {
 
+        List<Person> removeList = new List<Person>();
 
-        Item item = new Item();
-
-        foreach (Person people in list)
+        foreach (Person people in list.AsEnumerable().Reverse())
         {
             foreach (Person peopl in list)
             {
+                Item item = new Item();
 
                 if (people.setx == peopl.setx && people.sety == peopl.sety)
                 {
-                    if (people is Thief && peopl is Citizen)
+                    if (people is Thief thief && peopl is Citizen citizen)
                     {
-                        item.ThiefPopItem();
-                        News.AddNews("Ow now ", $"{people.Name} took {peopl.Name} {peopl.Pocket}");
+                        Item? stolenItem = item.ThiefPopItem(citizen, thief);
+                        if (stolenItem != null)
+                        {
+                            News.AddNews("Ow now ", $"{people.Name} took {peopl.Name} {stolenItem}");
+                        }
 
 
                     }
-                    if (people is Thief && peopl is Police)
+                    if (people is Thief thief2 && peopl is Police police)
                     {
-                        if (item.CopSiezedAll())
+                        
+                        if (item.CopSiezedAll(thief2))
                         {
-                            Prison prison = new Prison(people.Name);
+                            Prison.AddToPrison(thief2);
+                          
+                            if(!removeList.Contains(thief2))
+                                removeList.Add(thief2);  
                             
-                            //News.AddNews("HALT ", $"{peopl.Name} siezed all items from {people.Name}");
+                            
+                            News.AddNews("HALT ", $"{peopl.Name} siezed all items from {people.Name} and put in prison");
                         }
 
-                        News.AddNews("HALT ", $"{peopl.Name} siezed all items from {people.Name}");
 
 
                     }
@@ -99,6 +106,10 @@ public class UI : IUI
 
                 }
 
+            }
+            foreach(var thief in removeList)
+            {
+                list.Remove(thief);
             }
 
 
