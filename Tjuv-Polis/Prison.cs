@@ -1,22 +1,23 @@
 ﻿using System;
+using System.Security.Cryptography.X509Certificates;
 
 namespace Tjuv_Polis;
 
 public class Prison : Thief
 {
-    
+
+    public static Dictionary<Thief, DateTime> InmateTime = new Dictionary<Thief, DateTime>();
+
     public Prison(string name) : base(name)
     {
         Sentance = false;
         
     }
+
+    public static int SentanceTime { get; set; }
     // Antal tjuvar i finkan
     public static List<Thief> Inmates { get; set; } = new List<Thief>();
-
-    // Hur stor finkan är
     public static int Capazite { get; set; } = 10;
-
-    // Om tjuven är tagen eller inte
     public static bool Sentance { get; set; }
 
     //public void isSentanced(List<Thief> Inmates)
@@ -32,8 +33,8 @@ public class Prison : Thief
         int i = 0;
         foreach (var inmate in Inmates)
         {
-            //Console.SetCursorPosition(1, 16 + i);
-            //Console.Write($"{inmate.Name} is in prison");
+            Console.SetCursorPosition(1, 16 + i);
+            Console.Write($"{inmate.Name} is in prison");
 
 
             if (inmate.setx <= 2 || inmate.setx >= 17 || inmate.sety <= 16 || inmate.sety >= 26)
@@ -57,23 +58,38 @@ public class Prison : Thief
 
 
             Console.Write("\x1b[33mT\x1b[0m");
-            
-            
+
+
             i++;
+
+            SentanceTime--;
+
+            if (SentanceTime <= 0)
+            {
+                Sentance = false;
+            } 
 
             //Thread.Sleep(1000);
         }
+    }
+
+     
+
+        public static int SentanceDuration(List<Item> StolenProperties)
+    {
+        return StolenProperties.Count * 10;
+    }
+
 
     
-
-
-    }
     public static void AddToPrison(Thief thief)
     {
         
         
-            Inmates.Add(thief);
-            Sentance = true;
+        Inmates.Add(thief);
+        InmateTime[thief] = DateTime.Now;
+
+        Sentance = true;
         if (Sentance)
         {
             thief.set_y_Direction = random.Next(-1, 2);
@@ -82,6 +98,7 @@ public class Prison : Thief
             thief.sety = random.Next(17, 28);
             thief.StoreX = thief.setx;
             thief.StoreY = thief.sety;
+            SentanceTime = 10;
         }
         
     }
