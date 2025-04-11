@@ -35,6 +35,9 @@ public class Prison : Thief
     public static void DisplayInmates()
     {
         int i = 0;
+
+        List<Person> list = new List<Person>();
+
         foreach (var inmate in Inmates.AsEnumerable().Reverse())
         {
             //Console.SetCursorPosition(1, 16 + i);
@@ -71,9 +74,15 @@ public class Prison : Thief
             if (SentanceTime <= 0)
             {
                 Sentance = false;
+                list.Add(inmate);
             } 
 
             //Thread.Sleep(1000);
+        }
+
+        foreach (var inmate in list)
+        {
+            list.Remove(inmate);
         }
     }
 
