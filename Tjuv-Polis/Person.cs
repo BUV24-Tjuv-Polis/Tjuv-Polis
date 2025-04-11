@@ -52,7 +52,7 @@ public class Person : Item
         set { y_direction = value; }
     }
 
-    public Person(string name = null)
+    public Person(string name = null) 
     {
         Name = name;
         Pocket = new Item();
@@ -80,11 +80,20 @@ public class Person : Item
        new Citizen("Johan"),
        new Citizen("Ella"),
        new Citizen("Simon"),
-       //new Police("Jossan"),
-       //new Police("Lukas"),
-       //new Police("Laif"),
-       //new Police("Hugo"),
-       //new Police("Maja"),
+         new Citizen("Erik"),
+       new Citizen("Johan"),
+       new Citizen("Ella"),
+       new Citizen("Simon"),
+       new Police("Jossan"),
+       new Police("Lukas"),
+       new Police("Laif"),
+       new Police("Hugo"),
+       new Police("Maja"),
+       new Thief("Hans"),
+        new Police("Lukas"),
+       new Police("Laif"),
+       new Police("Hugo"),
+       new Police("Maja"),
        new Thief("Hans"),
        new Thief("Gunilla"),
        new Thief("Ola"),new Thief("Hans"),
@@ -95,83 +104,12 @@ public class Person : Item
        new Thief("Gunilla"),
        new Thief("Ola"),new Thief("Hans"),
        new Thief("Gunilla"),
-       new Thief("Ola"),new Thief("Hans"),
-       new Thief("Gunilla"),
-       new Thief("Ola"),new Thief("Hans"),
-       new Thief("Gunilla"),
-       new Thief("Ola"),new Thief("Hans"),
-       new Thief("Gunilla"),
-       new Thief("Ola"),new Thief("Hans"),
-       new Thief("Gunilla"),
-       new Thief("Ola"),new Thief("Hans"),
-       new Thief("Gunilla"),
-       new Thief("Ola"),new Thief("Hans"),
-       new Thief("Gunilla"),new Thief("Hans"),
-       new Thief("Gunilla"),
-       new Thief("Ola"),new Thief("Hans"),
-       new Thief("Gunilla"),
-       new Thief("Ola"),new Thief("Hans"),
-       new Thief("Gunilla"),
-       new Thief("Ola"),new Thief("Hans"),
-       new Thief("Gunilla"),
-       new Thief("Ola"),new Thief("Hans"),
-       new Thief("Gunilla"),
-       new Thief("Ola"),new Thief("Hans"),
-       new Thief("Gunilla"),
-       new Thief("Ola"),new Thief("Hans"),
-       new Thief("Gunilla"),
-       new Thief("Ola"),new Thief("Hans"),
-       new Thief("Gunilla"),
-       new Thief("Ola"),new Thief("Hans"),
-       new Thief("Gunilla"),
-       new Thief("Ola"),new Thief("Hans"),
-       new Thief("Gunilla"),
-       new Thief("Ola"),new Thief("Hans"),
-       new Thief("Gunilla"),new Thief("Hans"),
-       new Thief("Gunilla"),
-       new Thief("Ola"),new Thief("Hans"),
-       new Thief("Gunilla"),
-       new Thief("Ola"),new Thief("Hans"),
-       new Thief("Gunilla"),
-       new Thief("Ola"),new Thief("Hans"),
-       new Thief("Gunilla"),
-       new Thief("Ola"),new Thief("Hans"),
-       new Thief("Gunilla"),
-       new Thief("Ola"),new Thief("Hans"),
-       new Thief("Gunilla"),
-       new Thief("Ola"),new Thief("Hans"),
-       new Thief("Gunilla"),
-       new Thief("Ola"),new Thief("Hans"),
-       new Thief("Gunilla"),
-       new Thief("Ola"),new Thief("Hans"),
-       new Thief("Gunilla"),
-       new Thief("Ola"),new Thief("Hans"),
-       new Thief("Gunilla"),
-       new Thief("Ola"),new Thief("Hans"),
-       new Thief("Gunilla"),new Thief("Hans"),
-       new Thief("Gunilla"),
-       new Thief("Ola"),new Thief("Hans"),
-       new Thief("Gunilla"),
-       new Thief("Ola"),new Thief("Hans"),
-       new Thief("Gunilla"),
-       new Thief("Ola"),new Thief("Hans"),
-       new Thief("Gunilla"),
-       new Thief("Ola"),new Thief("Hans"),
-       new Thief("Gunilla"),
-       new Thief("Ola"),new Thief("Hans"),
-       new Thief("Gunilla"),
-       new Thief("Ola"),new Thief("Hans"),
-       new Thief("Gunilla"),
-       new Thief("Ola"),new Thief("Hans"),
-       new Thief("Gunilla"),
-       new Thief("Ola"),new Thief("Hans"),
-       new Thief("Gunilla"),
-       new Thief("Ola"),new Thief("Hans"),
-       new Thief("Gunilla"),
-       new Thief("Ola"),new Thief("Hans"),
-       new Thief("Gunilla"),
-       new Thief("Ola"),
-       new Thief("Roger")
+       new Thief("Ola"),new Thief("Hans")
+       //new Thief("Gunilla"),
+       //new Thief("Ola"),new Thief("Hans"),
+       //new Thief("Gunilla"),
+       //new Thief("Ola"),new Thief("Hans")
+      
 
         };
         return list;
@@ -194,6 +132,7 @@ public class Person : Item
 
 public class Thief : Person
 {
+    public List<Item> StolenProperties {  get; set; } = new List<Item>();
     public Thief(string name) : base(name)
     {
 
@@ -205,9 +144,13 @@ public class Thief : Person
 
         Console.Write("T");
         Console.ForegroundColor = ConsoleColor.White;
-
+    }
+    public void AddStolenItem(Item item)
+    {
+        StolenProperties.Add(item);
     }
 }
+
 
 public class Police : Person
 {

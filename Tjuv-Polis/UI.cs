@@ -60,9 +60,9 @@ public class UI : IUI
     public void CheckCollision(List<Person> list)
     {
 
+        List<Person> removeList = new List<Person>();
 
-
-        foreach (Person people in list)
+        foreach (Person people in list.AsEnumerable().Reverse())
         {
             foreach (Person peopl in list)
             {
@@ -70,9 +70,9 @@ public class UI : IUI
 
                 if (people.setx == peopl.setx && people.sety == peopl.sety)
                 {
-                    if (people is Thief && peopl is Citizen citizen)
+                    if (people is Thief thief && peopl is Citizen citizen)
                     {
-                        Item? stolenItem = item.ThiefPopItem(citizen);
+                        Item? stolenItem = item.ThiefPopItem(citizen, thief);
                         if (stolenItem != null)
                         {
                             //blankspace hantering av ny rad/töm rad
@@ -82,16 +82,20 @@ public class UI : IUI
 
 
                     }
-                    if (people is Thief && peopl is Police)
+                    if (people is Thief thief2 && peopl is Police police)
                     {
-                        if (item.CopSiezedAll())
+                        
+                        if (item.CopSiezedAll(thief2))
                         {
-                            Prison prison = new Prison(people.Name);
+                            Prison.AddToPrison(thief2);
+                          
+                            if(!removeList.Contains(thief2))
+                                removeList.Add(thief2);  
                             
-                            //News.AddNews("HALT ", $"{peopl.Name} siezed all items from {people.Name}");
+                            
+                            News.AddNews("HALT ", $"{peopl.Name} siezed all items from {people.Name} and put in prison");
                         }
 
-                        News.AddNews("HALT ", $"{peopl.Name} siezed all items from {people.Name}");
 
 
                     }
@@ -103,6 +107,10 @@ public class UI : IUI
                   
                 }
 
+            }
+            foreach(var thief in removeList)
+            {
+                list.Remove(thief);
             }
 
 
