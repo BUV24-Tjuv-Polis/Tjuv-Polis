@@ -2,11 +2,11 @@
 
 public class Prison : Thief
 {
-    
+
     public Prison(string name) : base(name)
     {
         Sentance = false;
-        
+
     }
 
     public static int SentanceTime { get; set; }
@@ -33,8 +33,9 @@ public class Prison : Thief
             Console.Write($"{inmate.Name} is in prison");
             i++;
         }
+    }
 
-    public void isSentanced (List<Thief> Inmates)
+    public void isSentanced(List<Thief> Inmates)
     {
         Sentance = true;
     }
