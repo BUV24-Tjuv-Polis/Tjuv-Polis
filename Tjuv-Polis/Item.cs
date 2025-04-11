@@ -23,6 +23,7 @@ public class Item
     public List<Item> Stole_Properties { get; set; } = new List<Item>();
 
     // Polisens invnetory
+    // fylls på men görs inget med. Onödig lista. 
     public List<Item> Seized_Properties { get; set; } = new List<Item>();
 
     public Item(string itemName = null)

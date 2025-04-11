@@ -27,6 +27,10 @@ public class Prison : Thief
     public static Random random = new Random();
 
 
+    //Skapa en metod som hanterar både fängelset och vanliga gridet.
+    // bool för att se om de är inmates eller ej. 
+    // inparametrar för att göra den icke repetetativ.
+    // lägg metod i UI istället. 
     public static void DisplayInmates()
     {
         int i = 0;

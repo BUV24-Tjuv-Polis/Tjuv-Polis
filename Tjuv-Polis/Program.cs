@@ -6,8 +6,9 @@ internal class Program
 {
     static async Task Main(string[] args)
     {
+        //Det saknas felhantering (try catch) 
 
-
+        // Man kan lägga detta i en class UI för att bara kalla på metoden. 
         Person persons = new Person();
         List<Person> list = persons.ListPerson();
         Random random = new Random();
@@ -34,7 +35,7 @@ internal class Program
 
             foreach (Person person in list)
             {
-
+                // skapa en metod av detta
                 if (person.setx <= 1 || person.setx >= 118 || person.sety <= 1 || person.sety >= 13)
                 {
                     person.setx = person.StoreX;

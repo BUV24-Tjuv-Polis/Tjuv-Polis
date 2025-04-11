@@ -72,6 +72,7 @@ public class UI : IUI
                         Item? stolenItem = item.ThiefPopItem(citizen, thief);
                         if (stolenItem != null)
                         {
+                            //blankspace hantering av ny rad/töm rad
                             News.AddNews($"{people.Name} took {peopl.Name} {stolenItem}                   ");
                         }
                     }
@@ -84,12 +85,13 @@ public class UI : IUI
 
                             if (!removeList.Contains(thief2))
                                 removeList.Add(thief2);
-
+                            //blankspace hantering av ny rad/töm rad
                             News.AddNews($"{peopl.Name} siezed all items from {people.Name} and put in prison                   ");
                         }
                     }
                     if (people is Police && peopl is Citizen)
                     {
+                        //blankspace hantering av ny rad/töm rad
                         News.AddNews($"{people.Name} say hello to {peopl.Name}                     ");
 
                     }

@@ -4,14 +4,17 @@
 
 public class Person : Item
 {
+    //Döp till relevanta namn. Så vi vet vad dem tillhör
     public int P { get; set; }
     public int L { get; set; }
 
     private static Random random = new Random();
 
+    // ta bort
     public Item Pocket { get; set; }
 
     public string? Name { get; set; }
+
     // Positionen X-Axel
     private int x;
 
@@ -35,6 +38,8 @@ public class Person : Item
 
     // Riktning X-Axel
 
+    // x_direction används ej. 
+
     private int x_Direction;
 
     public int set_x_Directions
@@ -43,6 +48,8 @@ public class Person : Item
         set { x_Direction = value; }
     }
     // Riktning Y-Axel
+
+    // y_direction används ej. 
 
     private int y_direction;
 
@@ -55,6 +62,7 @@ public class Person : Item
     public Person(string name = null) 
     {
         Name = name;
+        // pocket används inte
         Pocket = new Item();
         y_direction = random.Next(-1, 2);
         x_Direction = random.Next(-1, 2);
@@ -71,6 +79,7 @@ public class Person : Item
 
     }
 
+    // Skapa en klass för random av namn och och olika typer av personer.
     public List<Person> ListPerson()
     {
 
@@ -115,6 +124,7 @@ public class Person : Item
         return list;
     }
 
+    //används ej
     public void DeletePerson(string name)
     {
         List<Person> persons = ListPerson();
@@ -133,11 +143,8 @@ public class Person : Item
 public class Thief : Person
 {
     public List<Item> StolenProperties {  get; set; } = new List<Item>();
-    public Thief(string name) : base(name)
-    {
-
-
-    }
+    public Thief(string name) : base(name) { }
+    
     public override void displaychar()
     {
         Console.ForegroundColor = ConsoleColor.Red;
@@ -154,11 +161,8 @@ public class Thief : Person
 
 public class Police : Person
 {
-    public Police(string name) : base(name)
-    {
-
-
-    }
+    public Police(string name) : base(name) { }
+ 
     public override void displaychar()
     {
         Console.ForegroundColor = ConsoleColor.Blue;
@@ -173,10 +177,9 @@ public class Citizen : Person
 {
 
     public Item InventoryItem { get; set; } = new Item();
-    public Citizen(string name) : base(name)
-    {
-        InventoryItem.FillInventory();
-    }
+    public Citizen(string name) : base(name) { InventoryItem.FillInventory(); }
+    
+    
     public override void displaychar()
     {
         Console.ForegroundColor = ConsoleColor.Green;
