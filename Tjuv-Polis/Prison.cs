@@ -35,10 +35,10 @@ public class Prison : Thief
     public static void DisplayInmates()
     {
         int i = 0;
-        foreach (var inmate in Inmates)
+        foreach (var inmate in Inmates.AsEnumerable().Reverse())
         {
-            Console.SetCursorPosition(1, 16 + i);
-            Console.Write($"{inmate.Name} is in prison");
+            //Console.SetCursorPosition(1, 16 + i);
+            //Console.Write($"{inmate.Name} is in prison");
 
 
             if (inmate.setx <= 2 || inmate.setx >= 17 || inmate.sety <= 16 || inmate.sety >= 26)
