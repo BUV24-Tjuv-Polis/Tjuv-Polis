@@ -5,8 +5,10 @@ public class Prison : Thief
     public Prison(string name) : base(name)
     {
         Sentance = false;
-        Inmates.Add(new Thief(name));
+
     }
+
+    public static int SentanceTime { get; set; }
     // Antal tjuvar i finkan
     public List<Thief> Inmates { get; set; } = new List<Thief>();
 
@@ -16,9 +18,111 @@ public class Prison : Thief
     // Om tjuven är tagen eller inte
     public bool Sentance { get; set; }
 
-    public void isSentanced (List<Thief> Inmates)
+
+    //Skapa en metod som hanterar både fängelset och vanliga gridet.
+    // bool för att se om de är inmates eller ej. 
+    // inparametrar för att göra den icke repetetativ.
+    // lägg metod i UI istället. 
+    public static void DisplayInmates()
     {
-        Sentance = true;
+        int i = 0;
+
+     
+        //List<Person> list = new List<Person>();
+        List<Thief> thief = new List<Thief>();
+
+        foreach (var inmate in Inmates.AsEnumerable().Reverse())
+        {
+            //Console.SetCursorPosition(1, 16 + i);
+            //Console.Write($"{inmate.Name} is in prison");
+
+
+            if (inmate.setx <= 2 || inmate.setx >= 17 || inmate.sety <= 16 || inmate.sety >= 26)
+            {
+                inmate.setx = inmate.StoreX;
+                inmate.sety = inmate.StoreY;
+            }
+
+            inmate.setx += random.Next(-1, 2);
+            inmate.sety += random.Next(-1, 2);
+
+            if (inmate.P != inmate.setx || inmate.L != inmate.sety)
+            {
+                Console.SetCursorPosition(inmate.P, inmate.L);
+                Console.Write(" ");
+            }
+            inmate.P = inmate.setx;
+            inmate.L = inmate.sety;
+
+            Console.SetCursorPosition(inmate.setx, inmate.sety);
+
+
+            Console.Write("\x1b[33mT\x1b[0m");
+
+
+            i++;
+
+            SentanceTime--;
+
+            if (SentanceTime <= 0)
+            {
+                Sentance = false;
+                thief.Add(inmate);
+                Program.list.Add(inmate);
+                BackToCity(inmate);
+
+            } 
+
+            //Thread.Sleep(1000);
+        }
+
+        foreach (var inmate in thief)
+        {   
+
+            Inmates.Remove(inmate);
+            Console.SetCursorPosition(inmate.P, inmate.L);
+            Console.Write(" ");
+           
+        }
     }
 
+
+
+    public static int SentanceDuration(List<Item> StolenProperties)
+    {
+        return StolenProperties.Count * 10;
+    }
+
+    public static void BackToCity(Thief thief)
+    {
+        if (!Sentance)
+        {
+            thief.setx = random.Next(2, 118);
+            thief.sety = random.Next(2, 13);
+            thief.StoreX = thief.setx;
+            thief.StoreY = thief.sety;
+        }
+    }
+    
+    public static void AddToPrison(Thief thief)
+    {
+        
+        
+        Inmates.Add(thief);
+        InmateTime[thief] = DateTime.Now;
+
+        Sentance = true;
+        if (Sentance)
+        {
+            thief.set_y_Direction = random.Next(-1, 2);
+            thief.set_x_Directions = random.Next(-1, 2);
+            thief.setx = random.Next(2, 17);
+            thief.sety = random.Next(17, 28);
+            thief.StoreX = thief.setx;
+            thief.StoreY = thief.sety;
+            SentanceTime = 10;
+        }
+        
+    }
+    //METOD FÖR HUR LÄNGE DEM SITTER? 
 }

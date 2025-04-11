@@ -5,7 +5,7 @@ namespace Tjuv_Polis;
 public class UI : IUI
 {
 
-
+    public int P;
     public void DrawBorder(int width, int height, int xOffset = 0, int yOffset = 0)
     {
 
@@ -75,7 +75,9 @@ public class UI : IUI
                         Item? stolenItem = item.ThiefPopItem(citizen);
                         if (stolenItem != null)
                         {
-                            News.AddNews("Ow now ", $"{people.Name} took {peopl.Name} {stolenItem}");
+                            //blankspace hantering av ny rad/töm rad
+                            News.AddNews($"{people.Name} took {peopl.Name} {stolenItem}                   ");
+                            P++;
                         }
 
 
@@ -98,8 +100,7 @@ public class UI : IUI
                         News.AddNews("Hello ", $"{people.Name} say hello to {peopl.Name}");
 
                     }
-
-
+                  
                 }
 
             }
