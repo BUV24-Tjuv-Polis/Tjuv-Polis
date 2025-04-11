@@ -95,6 +95,7 @@ public class UI : IUI
                         News.AddNews($"{people.Name} say hello to {peopl.Name}                     ");
 
                     }
+                  
                 }
             }
             foreach (var thief in removeList)

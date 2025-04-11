@@ -4,13 +4,13 @@ namespace Tjuv_Polis;
 
 internal class Program
 {
+        private static Person persons = new Person();
+        public static List<Person> list = persons.ListPerson();
     static async Task Main(string[] args)
     {
         //Det saknas felhantering (try catch) 
 
         // Man kan lägga detta i en class UI för att bara kalla på metoden. 
-        Person persons = new Person();
-        List<Person> list = persons.ListPerson();
         Random random = new Random();
 
 

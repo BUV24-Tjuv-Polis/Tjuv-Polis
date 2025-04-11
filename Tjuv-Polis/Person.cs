@@ -103,10 +103,10 @@ public class Person : Item
        new Police("Laif"),
        new Police("Hugo"),
        new Police("Maja"),
-       new Thief("Hans")
-       //new Thief("Gunilla"),
-       //new Thief("Ola"),new Thief("Hans"),
-       //new Thief("Gunilla"),
+       new Thief("Hans"),
+       new Thief("Gunilla"),
+       new Thief("Ola"),new Thief("Hans"),
+       new Thief("Gunilla")
        //new Thief("Ola"),new Thief("Hans"),
        //new Thief("Gunilla"),
        //new Thief("Ola"),new Thief("Hans"),

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Security.Cryptography.X509Certificates;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace Tjuv_Polis;
 
@@ -36,7 +37,9 @@ public class Prison : Thief
     {
         int i = 0;
 
-        List<Person> list = new List<Person>();
+     
+        //List<Person> list = new List<Person>();
+        List<Thief> thief = new List<Thief>();
 
         foreach (var inmate in Inmates.AsEnumerable().Reverse())
         {
@@ -74,26 +77,42 @@ public class Prison : Thief
             if (SentanceTime <= 0)
             {
                 Sentance = false;
-                list.Add(inmate);
+                thief.Add(inmate);
+                Program.list.Add(inmate);
+                BackToCity(inmate);
+
             } 
 
             //Thread.Sleep(1000);
         }
 
-        foreach (var inmate in list)
-        {
-            list.Remove(inmate);
+        foreach (var inmate in thief)
+        {   
+
+            Inmates.Remove(inmate);
+            Console.SetCursorPosition(inmate.P, inmate.L);
+            Console.Write(" ");
+           
         }
     }
 
-     
 
-        public static int SentanceDuration(List<Item> StolenProperties)
+
+    public static int SentanceDuration(List<Item> StolenProperties)
     {
         return StolenProperties.Count * 10;
     }
 
-
+    public static void BackToCity(Thief thief)
+    {
+        if (!Sentance)
+        {
+            thief.setx = random.Next(2, 118);
+            thief.sety = random.Next(2, 13);
+            thief.StoreX = thief.setx;
+            thief.StoreY = thief.sety;
+        }
+    }
     
     public static void AddToPrison(Thief thief)
     {
