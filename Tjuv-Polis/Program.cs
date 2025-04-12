@@ -4,10 +4,11 @@ namespace Tjuv_Polis;
 
 internal class Program
 {
-    static void Main(string[] args)
+    static async Task Main(string[] args)
     {
+        //Det saknas felhantering (try catch) 
 
-
+        // Man kan lägga detta i en class UI för att bara kalla på metoden. 
         Person persons = new Person();
         List<Person> list = persons.ListPerson();
         Random random = new Random();
@@ -34,7 +35,7 @@ internal class Program
 
             foreach (Person person in list)
             {
-
+                // skapa en metod av detta
                 if (person.setx <= 1 || person.setx >= 118 || person.sety <= 1 || person.sety >= 13)
                 {
                     person.setx = person.StoreX;
@@ -54,11 +55,13 @@ internal class Program
 
                 Console.SetCursorPosition(person.setx, person.sety);
                 person.displaychar();
-                Prison.DisplayInmates();
                 Console.CursorVisible = false;
             }
+            Prison.DisplayInmates();
+            await Task.Delay(30);
 
-            Thread.Sleep(20);
+            //Thread.Sleep(20);
+
         }
 
 

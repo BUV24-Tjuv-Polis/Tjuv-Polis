@@ -52,9 +52,6 @@ public class UI : IUI
         theBorder.DrawBorder(99, 15, 21, 15);
         Console.SetCursorPosition(65, 15);
         Console.WriteLine("-BREAKING NEWS-");
-
-
-
     }
 
     public void CheckCollision(List<Person> list)
@@ -77,49 +74,33 @@ public class UI : IUI
                         {
                             //blankspace hantering av ny rad/töm rad
                             News.AddNews($"{people.Name} took {peopl.Name} {stolenItem}                   ");
-                            P++;
                         }
-
-
                     }
                     if (people is Thief thief2 && peopl is Police police)
                     {
-                        
+
                         if (item.CopSiezedAll(thief2))
                         {
                             Prison.AddToPrison(thief2);
-                          
-                            if(!removeList.Contains(thief2))
-                                removeList.Add(thief2);  
-                            
-                            
-                            News.AddNews("HALT ", $"{peopl.Name} siezed all items from {people.Name} and put in prison");
+
+                            if (!removeList.Contains(thief2))
+                                removeList.Add(thief2);
+                            //blankspace hantering av ny rad/töm rad
+                            News.AddNews($"{peopl.Name} siezed all items from {people.Name} and put in prison                   ");
                         }
-
-
-
                     }
                     if (people is Police && peopl is Citizen)
                     {
-                        News.AddNews("Hello ", $"{people.Name} say hello to {peopl.Name}");
+                        //blankspace hantering av ny rad/töm rad
+                        News.AddNews($"{people.Name} say hello to {peopl.Name}                     ");
 
                     }
-                  
                 }
-
             }
-            foreach(var thief in removeList)
+            foreach (var thief in removeList)
             {
                 list.Remove(thief);
             }
-
-
-
         }
-
     }
-
-
-
-
 }
