@@ -130,7 +130,23 @@ public class Prison : Thief
             thief.sety = random.Next(17, 28);
             thief.StoreX = thief.setx;
             thief.StoreY = thief.sety;
-            SentanceTime = 10;
+            //SentanceTime = 10;
+
+            if (thief.StolenProperties.Count == 3)
+            {
+                SentanceTime = 500;
+                thief.StolenProperties.Clear();
+            }
+            else if (thief.Inventory.Count == 2)
+            {
+                SentanceTime = 300;
+                thief.StolenProperties.Clear();
+            }
+            else
+            {
+                SentanceTime = 100;
+                thief.StolenProperties.Clear();
+            }
         }
         
     }

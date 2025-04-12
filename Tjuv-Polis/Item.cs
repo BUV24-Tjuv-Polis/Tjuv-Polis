@@ -56,7 +56,7 @@ public class Item
         if (thief.StolenProperties.Count > 0)
         {
             Seized_Properties.AddRange(thief.StolenProperties);
-            thief.StolenProperties.Clear();
+            //thief.StolenProperties.Clear();
             return true;
         }
 
