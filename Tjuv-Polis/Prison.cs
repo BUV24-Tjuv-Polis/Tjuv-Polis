@@ -1,18 +1,12 @@
-﻿using System;
-using System.Security.Cryptography.X509Certificates;
-using static System.Net.Mime.MediaTypeNames;
-
-namespace Tjuv_Polis;
+﻿namespace Tjuv_Polis;
 
 public class Prison : Thief
 {
-    //public static Dictionary<Thief, DateTime> InmateTime = new Dictionary<Thief, DateTime>();
     public static Dictionary<Thief, int> SentenceDurations = new Dictionary<Thief, int>();
 
     public Prison(string name) : base(name)
     {
         Sentance = false;
-
     }
 
     public static int SentanceTime { get; set; }
@@ -21,56 +15,34 @@ public class Prison : Thief
     public static int Capazite { get; set; } = 10;
     public static bool Sentance { get; set; }
 
-    //public void isSentanced(List<Thief> Inmates)
-    //{
-    //    Sentance = true;
-    //}
-
     public static Random random = new Random();
 
-
-    //Skapa en metod som hanterar både fängelset och vanliga gridet.
-    // bool för att se om de är inmates eller ej. 
-    // inparametrar för att göra den icke repetetativ.
-    // lägg metod i UI istället. 
     public static void DisplayInmates()
     {
-        int i = 0;
-
         List<Thief> toRealease = new List<Thief>();
-        //List<Person> list = new List<Person>();
         List<Thief> thief = new List<Thief>();
 
         foreach (var inmate in Inmates.AsEnumerable().Reverse())
         {
-            //Console.SetCursorPosition(1, 16 + i);
-            //Console.Write($"{inmate.Name} is in prison");
-
-
             if (inmate.setx <= 2 || inmate.setx >= 17 || inmate.sety <= 16 || inmate.sety >= 26)
             {
                 inmate.setx = inmate.StoreX;
                 inmate.sety = inmate.StoreY;
             }
-
             inmate.setx += random.Next(-1, 2);
             inmate.sety += random.Next(-1, 2);
 
-            if (inmate.P != inmate.setx || inmate.L != inmate.sety)
+            if (inmate.lastX != inmate.setx || inmate.lastY != inmate.sety)
             {
-                Console.SetCursorPosition(inmate.P, inmate.L);
+                Console.SetCursorPosition(inmate.lastX, inmate.lastY);
                 Console.Write(" ");
             }
-            inmate.P = inmate.setx;
-            inmate.L = inmate.sety;
+            inmate.lastX = inmate.setx;
+            inmate.lastY = inmate.sety;
 
             Console.SetCursorPosition(inmate.setx, inmate.sety);
 
-
             Console.Write("\x1b[33mT\x1b[0m");
-
-
-            i++;
 
             if (SentenceDurations.ContainsKey(inmate))
             {
@@ -82,31 +54,17 @@ public class Prison : Thief
                     Sentance = false;
                 }
             }
-
-
-            //Thread.Sleep(1000);
         }
 
         foreach (var inmate in toRealease)
         {
-
             SentenceDurations.Remove(inmate);
             Inmates.Remove(inmate);
-            Console.SetCursorPosition(inmate.P, inmate.L);
+            Console.SetCursorPosition(inmate.lastX, inmate.lastY);
             Console.Write(" ");
             BackToCity(inmate);
             Program.list.Add(inmate);
-
-
         }
-
-    }
-
-
-
-    public static int SentanceDuration(List<Item> StolenProperties)
-    {
-        return StolenProperties.Count * 10;
     }
 
     public static void BackToCity(Thief thief)
@@ -122,21 +80,14 @@ public class Prison : Thief
 
     public static void AddToPrison(Thief thief)
     {
-
-
         Inmates.Add(thief);
-        //InmateTime[thief] = DateTime.Now;
-
         Sentance = true;
         if (Sentance)
         {
-            thief.set_y_Direction = random.Next(-1, 2);
-            thief.set_x_Directions = random.Next(-1, 2);
             thief.setx = random.Next(2, 17);
             thief.sety = random.Next(17, 28);
             thief.StoreX = thief.setx;
             thief.StoreY = thief.sety;
-            //SentanceTime = 10;
 
             if (thief.StolenProperties.Count == 3)
             {
@@ -154,9 +105,6 @@ public class Prison : Thief
                 thief.StolenProperties.Clear();
             }
             SentenceDurations[thief] = SentanceTime;
-
         }
-
     }
-    //METOD FÖR HUR LÄNGE DEM SITTER? 
 }

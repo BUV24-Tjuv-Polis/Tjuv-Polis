@@ -1,17 +1,11 @@
 ﻿namespace Tjuv_Polis;
 
-
-
 public class Person : Item
 {
-    //Döp till relevanta namn. Så vi vet vad dem tillhör
-    public int P { get; set; }
-    public int L { get; set; }
+    public int lastX { get; set; }
+    public int lastY { get; set; }
 
     private static Random random = new Random();
-
-    // ta bort
-    public Item Pocket { get; set; }
 
     public string? Name { get; set; }
 
@@ -27,7 +21,6 @@ public class Person : Item
     }
 
     // Positionen Y-Axel
-
     private int y;
 
     public int sety
@@ -36,36 +29,9 @@ public class Person : Item
         set { y = value; }
     }
 
-    // Riktning X-Axel
-
-    // x_direction används ej. 
-
-    private int x_Direction;
-
-    public int set_x_Directions
-    {
-        get { return x_Direction; }
-        set { x_Direction = value; }
-    }
-    // Riktning Y-Axel
-
-    // y_direction används ej. 
-
-    private int y_direction;
-
-    public int set_y_Direction
-    {
-        get { return y_direction; }
-        set { y_direction = value; }
-    }
-
-    public Person(string name = null) 
+    public Person(string name = null)
     {
         Name = name;
-        // pocket används inte
-        Pocket = new Item();
-        y_direction = random.Next(-1, 2);
-        x_Direction = random.Next(-1, 2);
         x = random.Next(2, 118);
         y = random.Next(2, 13);
         StoreX = x;
@@ -75,8 +41,6 @@ public class Person : Item
     public virtual void displaychar()
     {
         Console.WriteLine("Ö");
-
-
     }
 
     // Skapa en klass för random av namn och och olika typer av personer.
@@ -89,7 +53,7 @@ public class Person : Item
        new Citizen("Johan"),
        new Citizen("Ella"),
        new Citizen("Simon"),
-         new Citizen("Erik"),
+       new Citizen("Erik"),
        new Citizen("Johan"),
        new Citizen("Ella"),
        new Citizen("Simon"),
@@ -98,101 +62,28 @@ public class Person : Item
        new Police("Laif"),
        new Police("Hugo"),
        new Police("Maja"),
-       new Thief("Hans"),
         new Police("Lukas"),
        new Police("Laif"),
        new Police("Hugo"),
        new Police("Maja"),
        new Thief("Hans"),
+       new Thief("Hans"),
        new Thief("Gunilla"),
-       new Thief("Ola"),new Thief("Hans"),
-       new Thief("Gunilla"),
-       new Thief("Ola"),new Thief("Hans"),
-       new Thief("Gunilla"),
-       new Thief("Ola"),new Thief("Hans"),
-       new Thief("Gunilla"),
-       new Thief("Ola"),new Thief("Hans"),
-       new Thief("Gunilla"),
-       new Thief("Ola"),new Thief("Hans"),
-       new Thief("Gunilla"),
-       new Thief("Ola"),new Thief("Hans"),
-       new Thief("Gunilla"),new Thief("Ola"),new Thief("Hans"),
-       new Thief("Gunilla"),
-       new Thief("Ola"),new Thief("Hans"),
-       //new Thief("Gunilla"),
-       //new Thief("Ola"),new Thief("Hans"),
-       //new Thief("Gunilla"),
-       //new Thief("Ola"),new Thief("Hans"),
-       //new Thief("Gunilla"),
-       //new Thief("Ola"),new Thief("Hans"),
-       //new Thief("Gunilla"),
-       //new Thief("Ola"),new Thief("Hans"),
-       //new Thief("Gunilla"),new Thief("Ola"),new Thief("Hans"),
-       //new Thief("Gunilla"),
-       //new Thief("Ola"),new Thief("Hans"),
-       //new Thief("Gunilla"),
-       //new Thief("Ola"),new Thief("Hans"),
-       //new Thief("Gunilla"),
-       //new Thief("Ola"),new Thief("Hans"),
-       //new Thief("Gunilla"),
-       //new Thief("Ola"),new Thief("Hans"),
-       //new Thief("Gunilla"),
-       //new Thief("Ola"),new Thief("Hans"),
-       //new Thief("Gunilla"),new Thief("Ola"),new Thief("Hans"),
-       //new Thief("Gunilla"),
-       //new Thief("Ola"),new Thief("Hans"),
-       //new Thief("Gunilla"),
-       //new Thief("Ola"),new Thief("Hans"),
-       //new Thief("Gunilla"),
-       //new Thief("Ola"),new Thief("Hans"),
-       //new Thief("Gunilla"),
-       //new Thief("Ola"),new Thief("Hans"),
-       //new Thief("Gunilla"),
-       //new Thief("Ola"),new Thief("Hans"),
-       //new Thief("Gunilla"),new Thief("Ola"),new Thief("Hans"),
-       //new Thief("Gunilla"),
-       //new Thief("Ola"),new Thief("Hans"),
-       //new Thief("Gunilla"),
-       //new Thief("Ola"),new Thief("Hans"),
-       //new Thief("Gunilla"),
-       //new Thief("Ola"),new Thief("Hans"),
-       //new Thief("Gunilla"),
-       //new Thief("Ola"),new Thief("Hans"),
-       //new Thief("Gunilla"),
-       //new Thief("Ola"),new Thief("Hans"),
-       //new Thief("Gunilla"),
-       //new Thief("Ola"),new Thief("Hans")
-
-
+       new Thief("Ola"),
+       new Thief("Hans"),
         };
         return list;
     }
-
-    //används ej
-    public void DeletePerson(string name)
-    {
-        List<Person> persons = ListPerson();
-        for (int i = 0; i < persons.Count; i++)
-        {
-            if (persons[i].Name == name)
-            {
-                persons.RemoveAt(i);
-                break;
-            }
-        }
-    }
-
 }
 
 public class Thief : Person
 {
-    public List<Item> StolenProperties {  get; set; } = new List<Item>();
+    public List<Item> StolenProperties { get; set; } = new List<Item>();
     public Thief(string name) : base(name) { }
-    
+
     public override void displaychar()
     {
         Console.ForegroundColor = ConsoleColor.Red;
-
         Console.Write("T");
         Console.ForegroundColor = ConsoleColor.White;
     }
@@ -206,14 +97,12 @@ public class Thief : Person
 public class Police : Person
 {
     public Police(string name) : base(name) { }
- 
+
     public override void displaychar()
     {
         Console.ForegroundColor = ConsoleColor.Blue;
-
         Console.Write("P");
         Console.ForegroundColor = ConsoleColor.White;
-
     }
 }
 
@@ -222,19 +111,18 @@ public class Citizen : Person
 
     public Item InventoryItem { get; set; } = new Item();
     public Citizen(string name) : base(name) { InventoryItem.FillInventory(); }
-    
-    
+
     public override void displaychar()
     {
-        Console.ForegroundColor = ConsoleColor.Green;
-
-        Console.Write("C");
-
-        Console.ForegroundColor = ConsoleColor.White;
-
+        if (InventoryItem.Inventory.Count <= 0)
+        {
+            Console.Write("C");
+        }
+        else
+        {
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.Write("C");
+            Console.ForegroundColor = ConsoleColor.White;
+        }
     }
-
-
-
-
 }

@@ -4,15 +4,11 @@ namespace Tjuv_Polis;
 
 internal class Program
 {
-        private static Person persons = new Person();
-        public static List<Person> list = persons.ListPerson();
+    private static Person persons = new Person();
+    public static List<Person> list = persons.ListPerson();
     static async Task Main(string[] args)
     {
-        //Det saknas felhantering (try catch) 
-
-        // Man kan lägga detta i en class UI för att bara kalla på metoden. 
         Random random = new Random();
-
 
         foreach (Person person in list)
         {
@@ -25,12 +21,8 @@ internal class Program
         while (true)
         {
             UI.CheckCollision(list);
-
-
             Console.SetCursorPosition(22, 16);
             News.TheNews();
-
-
             Console.CursorVisible = false;
 
             foreach (Person person in list)
@@ -41,29 +33,23 @@ internal class Program
                     person.setx = person.StoreX;
                     person.sety = person.StoreY;
                 }
-
                 person.setx += random.Next(-1, 2);
                 person.sety += random.Next(-1, 2);
 
-                if (person.P != person.setx || person.L != person.sety)
+                if (person.lastX != person.setx || person.lastY != person.sety)
                 {
-                    Console.SetCursorPosition(person.P, person.L);
+                    Console.SetCursorPosition(person.lastX, person.lastY);
                     Console.Write(" ");
                 }
-                person.P = person.setx;
-                person.L = person.sety;
+                person.lastX = person.setx;
+                person.lastY = person.sety;
 
                 Console.SetCursorPosition(person.setx, person.sety);
                 person.displaychar();
                 Console.CursorVisible = false;
             }
             Prison.DisplayInmates();
-            await Task.Delay(50);
-
-            //Thread.Sleep(20);
-
+            await Task.Delay(55);
         }
-
-
     }
 }

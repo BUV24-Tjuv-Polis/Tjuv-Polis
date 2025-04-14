@@ -1,10 +1,7 @@
 ﻿namespace Tjuv_Polis;
 public class News
 {
-
-    public string Title { get; set; }
     public string Content { get; set; }
-
 
     public News(string content)
     {
@@ -28,7 +25,6 @@ public class News
 
     public static void TheNews()
     {
-
         ClearNews();
 
         if (newsList.Count > 13)

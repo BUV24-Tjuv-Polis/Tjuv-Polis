@@ -1,21 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Tjuv_Polis;
+﻿namespace Tjuv_Polis;
 
 public class Item
 {
-    // Namn för 
     public string? ItemName { get; set; } = null;
 
     public override string ToString()
     {
         return ItemName;
     }
-
     // Medboragens inventory
     public Stack<Item> Inventory { get; set; } = new Stack<Item>();
 
@@ -23,7 +15,6 @@ public class Item
     public List<Item> Stole_Properties { get; set; } = new List<Item>();
 
     // Polisens invnetory
-    // fylls på men görs inget med. Onödig lista. 
     public List<Item> Seized_Properties { get; set; } = new List<Item>();
 
     public Item(string itemName = null)
@@ -42,7 +33,7 @@ public class Item
     //Tjuven tar av medborgaren
     public Item? ThiefPopItem(Citizen citizen, Thief thief)
     {
-        if(citizen.InventoryItem.Inventory.Count > 0)
+        if (citizen.InventoryItem.Inventory.Count > 0)
         {
             Item stolen = citizen.InventoryItem.Inventory.Pop();
             thief.AddStolenItem(stolen);
@@ -56,31 +47,8 @@ public class Item
         if (thief.StolenProperties.Count > 0)
         {
             Seized_Properties.AddRange(thief.StolenProperties);
-            //thief.StolenProperties.Clear();
             return true;
         }
-
         return false;
     }
-
-    // Senare implementation för backlog
-    public void ShowInventory()
-    {
-        if (Inventory.Count == 0)
-        {
-            Console.WriteLine("It's empty!");
-        }
-
-        else
-        {
-            Console.WriteLine("Inventory:");
-            foreach (var item in Inventory)
-            {
-                Console.WriteLine($"{item.ItemName}");
-            }
-        }
-
-            
-    }
-
 }
