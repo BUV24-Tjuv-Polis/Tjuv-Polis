@@ -42,35 +42,39 @@ public class Person : Item
     {
         Console.WriteLine("Ö");
     }
-
-    // Skapa en klass för random av namn och och olika typer av personer.
     public List<Person> ListPerson()
     {
 
         List<Person> list = new List<Person>
         {
-       new Citizen("Erik"),
-       new Citizen("Johan"),
-       new Citizen("Ella"),
-       new Citizen("Simon"),
-       new Citizen("Erik"),
-       new Citizen("Johan"),
-       new Citizen("Ella"),
-       new Citizen("Simon"),
-       new Police("Jossan"),
-       new Police("Lukas"),
-       new Police("Laif"),
-       new Police("Hugo"),
-       new Police("Maja"),
-        new Police("Lukas"),
-       new Police("Laif"),
-       new Police("Hugo"),
-       new Police("Maja"),
-       new Thief("Hans"),
-       new Thief("Hans"),
-       new Thief("Gunilla"),
-       new Thief("Ola"),
-       new Thief("Hans"),
+           new Citizen("Johan"),
+           new Citizen("Lars"),
+           new Citizen("Elin"),
+           new Citizen("Oskar"),
+           new Citizen("Anna"),
+           new Citizen("Viktor"),
+           new Citizen("Maja"),
+           new Citizen("Karl"),
+           new Citizen("Agnes"),
+           new Citizen("Filip"),
+           new Citizen("Ingrid"),
+           new Citizen("Emil"),
+           new Citizen("Tilde"),
+
+           new Thief("Gunilla"),
+           new Thief("Johan"),
+           new Thief("Freja"),
+           new Thief("Nils"),
+           new Thief("Lovisa"),
+           new Thief("Simon"),
+           new Thief("Ida"),
+           new Thief("Malte"),
+
+           new Police("Erik"),
+           new Police("Sofia"),
+           new Police("Anders"),
+           new Police("Karin"),
+           new Police("Henrik"),
         };
         return list;
     }
@@ -92,8 +96,6 @@ public class Thief : Person
         StolenProperties.Add(item);
     }
 }
-
-
 public class Police : Person
 {
     public Police(string name) : base(name) { }
@@ -108,7 +110,6 @@ public class Police : Person
 
 public class Citizen : Person
 {
-
     public Item InventoryItem { get; set; } = new Item();
     public Citizen(string name) : base(name) { InventoryItem.FillInventory(); }
 

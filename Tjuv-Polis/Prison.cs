@@ -8,7 +8,6 @@ public class Prison : Thief
     {
         Sentance = false;
     }
-
     public static int SentanceTime { get; set; }
     // Antal tjuvar i finkan
     public static List<Thief> Inmates { get; set; } = new List<Thief>();
@@ -55,7 +54,6 @@ public class Prison : Thief
                 }
             }
         }
-
         foreach (var inmate in toRealease)
         {
             SentenceDurations.Remove(inmate);
