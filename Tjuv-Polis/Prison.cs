@@ -6,13 +6,13 @@ namespace Tjuv_Polis;
 
 public class Prison : Thief
 {
-
-    public static Dictionary<Thief, DateTime> InmateTime = new Dictionary<Thief, DateTime>();
+    //public static Dictionary<Thief, DateTime> InmateTime = new Dictionary<Thief, DateTime>();
+    public static Dictionary<Thief, int> SentenceDurations = new Dictionary<Thief, int>();
 
     public Prison(string name) : base(name)
     {
         Sentance = false;
-        
+
     }
 
     public static int SentanceTime { get; set; }
@@ -37,7 +37,7 @@ public class Prison : Thief
     {
         int i = 0;
 
-     
+        List<Thief> toRealease = new List<Thief>();
         //List<Person> list = new List<Person>();
         List<Thief> thief = new List<Thief>();
 
@@ -72,28 +72,34 @@ public class Prison : Thief
 
             i++;
 
-            SentanceTime--;
-
-            if (SentanceTime <= 0)
+            if (SentenceDurations.ContainsKey(inmate))
             {
-                Sentance = false;
-                thief.Add(inmate);
-                Program.list.Add(inmate);
-                BackToCity(inmate);
+                SentenceDurations[inmate]--;
+                if (SentenceDurations[inmate] <= 0)
+                {
+                    toRealease.Add(inmate);
+                    thief.Add(inmate);
+                    Sentance = false;
+                }
+            }
 
-            } 
 
             //Thread.Sleep(1000);
         }
 
-        foreach (var inmate in thief)
-        {   
+        foreach (var inmate in toRealease)
+        {
 
+            SentenceDurations.Remove(inmate);
             Inmates.Remove(inmate);
             Console.SetCursorPosition(inmate.P, inmate.L);
             Console.Write(" ");
-           
+            BackToCity(inmate);
+            Program.list.Add(inmate);
+
+
         }
+
     }
 
 
@@ -113,13 +119,13 @@ public class Prison : Thief
             thief.StoreY = thief.sety;
         }
     }
-    
+
     public static void AddToPrison(Thief thief)
     {
-        
-        
+
+
         Inmates.Add(thief);
-        InmateTime[thief] = DateTime.Now;
+        //InmateTime[thief] = DateTime.Now;
 
         Sentance = true;
         if (Sentance)
@@ -147,8 +153,10 @@ public class Prison : Thief
                 SentanceTime = 100;
                 thief.StolenProperties.Clear();
             }
+            SentenceDurations[thief] = SentanceTime;
+
         }
-        
+
     }
     //METOD FÖR HUR LÄNGE DEM SITTER? 
 }

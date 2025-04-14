@@ -58,7 +58,7 @@ internal class Program
                 Console.CursorVisible = false;
             }
             Prison.DisplayInmates();
-            await Task.Delay(30);
+            await Task.Delay(50);
 
             //Thread.Sleep(20);
 
