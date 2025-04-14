@@ -11,7 +11,6 @@ public class Prison : Thief
     public static int SentanceTime { get; set; }
     // Antal tjuvar i finkan
     public static List<Thief> Inmates { get; set; } = new List<Thief>();
-    public static int Capazite { get; set; } = 10;
     public static bool Sentance { get; set; }
 
     public static Random random = new Random();
